@@ -88,6 +88,19 @@ class MetaModeSolution:
         self.permuted_modes[channel] = rng.permutation(self.n_modes)
         return self
 
+    def step(self: "MetaModeSolution") -> "MetaModeSolution":
+        """Take a step in the annealing process.
+
+        Returns
+        -------
+        MetaModeSolution
+            The solution after taking a step.
+        """
+        self.permute_one_channel(
+            channel=rng.integers(self.n_channels),
+        )
+        return self
+
     def copy(self: "MetaModeSolution") -> "MetaModeSolution":
         """Copy the solution.
 

@@ -76,9 +76,7 @@ class MetaModeSolver:
             Whether the step was accepted.
         """
         solution = self.best_solution.copy()
-        solution.permute_one_channel(
-            rng.integers(solution.n_channels),
-        )
+        solution.step()
         value = self.problem.evaluate(solution)
         if value > self.best_value:
             self.best_solution = solution
